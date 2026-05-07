@@ -1,0 +1,40 @@
+# Python
+__pycache__/
+*.py[cod]
+*.so
+
+# Virtuelle Environments
+venv/
+.venv/
+env/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Logs
+*.log
+
+# Temporäre Dateien
+*.tmp
+
+# Systemdateien
+.DS_Store
+Thumbs.db
+
+# Secrets
+.env
+
+# =========================
+# Grosse Daten / Outputs
+# =========================
+
+Composites_GeoTIFF/
+Composites_Plots/
+Data_Natura2000/
+
+# Sentinel-Ordner
+S2C_*/
+
+# GeoTIFF-Dateien allgemein
+*.tif
+*.tiff
