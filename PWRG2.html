@@ -2350,7 +2350,14 @@ window.Quarto = {
   <li><a href="#preprocessing-der-rasterdaten-für-die-analyse" id="toc-preprocessing-der-rasterdaten-für-die-analyse" class="nav-link" data-scroll-target="#preprocessing-der-rasterdaten-für-die-analyse"><span class="header-section-number">5.4</span> Preprocessing der Rasterdaten für die Analyse</a></li>
   <li><a href="#change-detection-und-zeitreihenanalyse" id="toc-change-detection-und-zeitreihenanalyse" class="nav-link" data-scroll-target="#change-detection-und-zeitreihenanalyse"><span class="header-section-number">5.5</span> Change Detection und Zeitreihenanalyse</a></li>
   </ul></li>
-  <li><a href="#herausforderungen" id="toc-herausforderungen" class="nav-link" data-scroll-target="#herausforderungen"><span class="header-section-number">6</span> Herausforderungen:</a></li>
+  <li><a href="#ergebnisse-und-interpretation" id="toc-ergebnisse-und-interpretation" class="nav-link" data-scroll-target="#ergebnisse-und-interpretation"><span class="header-section-number">6</span> 6 Ergebnisse und Interpretation</a>
+  <ul class="collapse">
+  <li><a href="#szenenauswahl" id="toc-szenenauswahl" class="nav-link" data-scroll-target="#szenenauswahl"><span class="header-section-number">6.1</span> 6.1 Szenenauswahl</a></li>
+  <li><a href="#change-detection" id="toc-change-detection" class="nav-link" data-scroll-target="#change-detection"><span class="header-section-number">6.2</span> 6.2 Change Detection</a></li>
+  <li><a href="#zeitreihenanalyse" id="toc-zeitreihenanalyse" class="nav-link" data-scroll-target="#zeitreihenanalyse"><span class="header-section-number">6.3</span> 6.3 Zeitreihenanalyse</a></li>
+  <li><a href="#methodische-einordnung" id="toc-methodische-einordnung" class="nav-link" data-scroll-target="#methodische-einordnung"><span class="header-section-number">6.4</span> 6.4 Methodische Einordnung</a></li>
+  </ul></li>
+  <li><a href="#herausforderungen" id="toc-herausforderungen" class="nav-link" data-scroll-target="#herausforderungen"><span class="header-section-number">7</span> Herausforderungen:</a></li>
   </ul>
 </nav>
 </div>
@@ -2487,8 +2494,27 @@ dNDVI = NDVI_{t2} - NDVI_{t1}
 <p>In der Zeitreihenanalyse werden sowohl NDVI als auch NBR berücksichtigt, da die beiden Indizes unterschiedliche Eigenschaften der Vegetation abbilden. Der Vergleich beider Indizes hilft bei der Interpretation der Ergebnisse. Wenn NDVI und NBR ähnliche negative Entwicklungen zeigen, kann dies auf eine robustere Veränderung der Vegetation hindeuten.</p>
 </section>
 </section>
-<section id="herausforderungen" class="level1" data-number="6">
-<h1 data-number="6"><span class="header-section-number">6</span> Herausforderungen:</h1>
+<section id="ergebnisse-und-interpretation" class="level1" data-number="6">
+<h1 data-number="6"><span class="header-section-number">6</span> 6 Ergebnisse und Interpretation</h1>
+<section id="szenenauswahl" class="level2" data-number="6.1">
+<h2 data-number="6.1" class="anchored" data-anchor-id="szenenauswahl"><span class="header-section-number">6.1</span> 6.1 Szenenauswahl</h2>
+<p>Kurze Tabelle: Jahr, Datum, Anzahl Tiles, Wolkenanteil AOI.</p>
+</section>
+<section id="change-detection" class="level2" data-number="6.2">
+<h2 data-number="6.2" class="anchored" data-anchor-id="change-detection"><span class="header-section-number">6.2</span> 6.2 Change Detection</h2>
+<p>Kurze Interpretation der dNDVI-Ergebnisse: - Welche Perioden zeigen die grössten potenziellen Waldverluste? - Sind die Veränderungspixel räumlich konzentriert oder verteilt? - Hinweis: Es handelt sich um potenzielle Waldverluste, nicht validierte Abholzung.</p>
+</section>
+<section id="zeitreihenanalyse" class="level2" data-number="6.3">
+<h2 data-number="6.3" class="anchored" data-anchor-id="zeitreihenanalyse"><span class="header-section-number">6.3</span> 6.3 Zeitreihenanalyse</h2>
+<p>Kurze Interpretation: - Entwicklung der globalen NDVI-/NBR-Mittelwerte. - Auffälligkeit 2021. - Vergleich Trend 2021–2025 vs. Sensitivität 2022–2025. - Wo stimmen NDVI und NBR räumlich überein?</p>
+</section>
+<section id="methodische-einordnung" class="level2" data-number="6.4">
+<h2 data-number="6.4" class="anchored" data-anchor-id="methodische-einordnung"><span class="header-section-number">6.4</span> 6.4 Methodische Einordnung</h2>
+<p>Die Resultate zeigen, dass der Workflow geeignet ist, potenzielle Waldveränderungen sichtbar zu machen. Eine abschliessende Validierung ist jedoch nicht Teil der Arbeit.</p>
+</section>
+</section>
+<section id="herausforderungen" class="level1" data-number="7">
+<h1 data-number="7"><span class="header-section-number">7</span> Herausforderungen:</h1>
 <p>Eine zentrale Herausforderung bestand darin, den Zugriff auf Sentinel-2-Daten über den STAC-Katalog und die Microsoft Planetary Computer Platform zu verstehen. Besonders relevant war dabei das Prinzip des <em>lazy loading</em>. Viele Verarbeitungsschritte werden zunächst nur vorbereitet und erst dann tatsächlich ausgeführt, wenn die Daten explizit geladen oder berechnet werden. Für den Aufbau des Workflows war es daher wichtig zu verstehen, wann Daten nur referenziert werden und wann sie tatsächlich verarbeitet werden.</p>
 <p>Eine weitere Herausforderung war die Entwicklung einer geeigneten Logik zur Auswahl der wolkenärmsten Szene pro Untersuchungsjahr. Der in den STAC-Metadaten angegebene Wolkenanteil bezieht sich nicht zwingend auf die AOI und ist daher für diese Analyse nur bedingt aussagekräftig. Deshalb wurde der Wolkenfilter in der STAC-Suche bewusst relativ offen gewählt. Anschliessend wurde für jede geeignete Szene der Wolkenanteil innerhalb der AOI anhand des Scene Classification Layer berechnet. Erst auf dieser Grundlage wurde die beste Szene pro Jahr ausgewählt.</p>
 <p>Auch der Umgang mit <code>stackstac</code> erforderte Einarbeitung. Das Tool ist sehr nützlich, weil es STAC-Items direkt als xarray-Datenstruktur laden und weiterverarbeiten kann. Gleichzeitig war es notwendig zu verstehen, wie Funktionen auf diese Daten angewendet werden, wie Mosaike aus mehreren Tiles erstellt werden und wann Berechnungen tatsächlich ausgeführt werden.</p>
