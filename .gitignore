@@ -31,6 +31,7 @@ Thumbs.db
 Composites_GeoTIFF/
 Composites_Plots/
 Data_Natura2000/
+*.csv
 
 # Sentinel-Ordner
 S2C_*/
